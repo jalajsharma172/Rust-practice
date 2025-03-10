@@ -1,0 +1,38 @@
+// //Don't use mutable and immutable reference at the same time
+// fn main(){
+//     let str =String::from("Hey Bhai");
+//     let r1=&str;
+//     let r2=&str;
+//     println!("r1= {} and r2={}",r1,r2);
+//     let w1=&str;
+//     println!("{}",w1);
+// }
+
+//Use Scope to avoid mutable and immutable reference at the same time
+fn main(){
+    let mut str =String::from("Hey Bhai");
+    {
+        let w1=& mut str;//w1 will not be in scope
+        println!("w1= {} ",w1);//w1 will not be in scope
+    }
+    let r1=&str;
+    let r2=&str;
+    
+    println!("r1= {} and r2={}",r1,r2);
+
+   
+}
+
+//Got ERROR because we can't have mutable and immutable reference at the same time
+// fn main(){
+//     let mut str =String::from("Hey Bhai");
+//     let r1=&str;
+//     let r2=&str;
+//     { // Can't use here now because Now r1 and r2 is Immutable Reference
+//         let w1=& mut str;//w1 will not be in scope
+//         println!("w1= {} ",w1);//w1 will not be in scope
+//     }
+//     println!("r1= {} and r2={}",r1,r2);
+
+// }
+

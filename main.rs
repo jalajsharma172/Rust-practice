@@ -1,8 +1,11 @@
+//Use Scope to avoid mutable and immutable reference at the same time
 fn main(){
-    let mut str:  String=String::from("Chal chal ke ");//str is the owner of HEAP1
-    append_str(  & mut str);//str refering s 
-    print!("{}",str);
+    let mut str =String::from("Hey Bhai");
+    {
+        let w1=& mut str;//w1 will not be in scope
+        println!("w1= {} ",w1);//w1 will not be in scope
+    }
+    let r1=&str;
+    let r2=&str;
+    println!("r1= {} and r2={}",r1,r2);
 }
-fn append_str(s:  & mut String){
-    s.push_str(" Dikha ");
-}       
